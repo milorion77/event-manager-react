@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <div>
+        <h1>De vez en cuando viene bien dormir :D</h1>
         <h1>hola Amigos! ?</h1>
         <h1>Hola grupo que tal</h1>
         <a href="https://vitejs.dev" target="_blank">
