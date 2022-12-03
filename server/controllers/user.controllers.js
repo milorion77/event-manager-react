@@ -29,12 +29,12 @@ module.exports.register = (req, res) => {
 }
 
 module.exports.login = (req, res) => {
-    User.findOne({email: req.body.email})
+    User.findOne({Email: req.body.Email})
         .then(user => {
             if(user === null) {
                 res.json({error: true, message: "El correo electrónico es incorrecto."});
             } else {
-                bcrypt.compare(req.body.password, user.password)
+                bcrypt.compare(req.body.Password, user.Password)
                     .then(passwordValid => {
                         if(passwordValid) {
                             const payload = {

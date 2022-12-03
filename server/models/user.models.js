@@ -41,15 +41,15 @@ const SchemaUser = new mongoose.Schema({
 }, {timestamps: true, versionKey: false})
 
 //Atributo temporal
-SchemaUser.virtual('ConfirmPassword')
-    .get( ()=> this._ConfirmPassword )
-    .set( value => this._ConfirmPassword = value );
+SchemaUser.virtual('confirmPassword')
+    .get( ()=> this._confirmPassword )
+    .set( value => this._confirmPassword = value );
 
 
 //Se hace ANTES de validar el esquema de usuario
 SchemaUser.pre('validate', function(next) {
-    if(this.password != this.ConfirmPassword) {
-        this.invalidate('ConfirmPassword', 'Las contraseñas no coinciden');
+    if(this.Password != this.confirmPassword) {
+        this.invalidate('confirmPassword', 'Las contraseñas no coinciden');
     }
 
     next();
@@ -57,12 +57,12 @@ SchemaUser.pre('validate', function(next) {
 
 //Antes de guardar el usuario, encriptamos la contraseña
 SchemaUser.pre('save', function(next){
-    bcrypt.hash(this.password, 10) //La cantidad de veces que encryptamos o hasheamos la contraseña
+    bcrypt.hash(this.Password, 10) //La cantidad de veces que encryptamos o hasheamos la contraseña
         .then(hash => {
-            this.password = hash;
+            this.Password = hash;
             next();
         });
 });
 
-const User = mongoose.model("Users", SchemaUser);
+const User = mongoose.model("User", SchemaUser);
 module.exports = User;
