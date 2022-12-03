@@ -1,16 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import '@fullcalendar/react/dist/vdom';
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+
 function Dashboard(props) {
-    return (
-        <div>
-            <h1>Esta va a ser la página del dashboard</h1>
-            <Link className='ms-2' to={'/'}>Index</Link>
-            <Link className='ms-2' to={'/register'}>Registrarse</Link>
-            <Link className='ms-2' to={'/login'}>Iniciar sesión</Link>
-            <Link className='ms-2' to={'/dashboard'}>Dashboard</Link>
-            <Link className='ms-2' to={'/add-event'}>Añadir evento</Link>
-        </div>
-    );
+
+  return (
+    <div>
+      <h1>Calendario</h1>
+      <FullCalendar
+        locale={"esLocale"}
+        height={"auto"}
+        plugins={[ dayGridPlugin ]}
+        initialView="dayGridWeek"
+        events={[
+          { title: 'event 1', date: '2022-12-03' },
+          { title: 'event 2', date: '2022-12-04' }
+        ]}
+      />
+    </div>
+  );
 }
 
 export default Dashboard;
