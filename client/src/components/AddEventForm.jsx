@@ -4,7 +4,7 @@ function AddEventForm(props) {
 
     return (
         <div>
-            <h1>Esta va a ser el form para añadir eventos</h1>
+            <h1>Esta va a ser el form para añadir eventos Le toca a Fernanda </h1>
             <Link className='ms-2' to={'/'}>Index</Link>
             <Link className='ms-2' to={'/register'}>Registrarse</Link>
             <Link className='ms-2' to={'/login'}>Iniciar sesión</Link>
