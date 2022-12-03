@@ -4,6 +4,7 @@ function Index(props) {
     return (
         <div>
             <h1>Esta va a ser la página principal</h1>
+            <p> Esta prueba es de camilo </p>
             <Link className='ms-2' to={'/'}>Index</Link>
             <Link className='ms-2' to={'/register'}>Registrarse</Link>
             <Link className='ms-2' to={'/login'}>Iniciar sesión</Link>
