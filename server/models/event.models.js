@@ -23,8 +23,7 @@ const SchemaEvent = new mongoose.Schema({
     },
     Food:{
         type: String,
-        required: [true, "Debes Ingresar una respuesta"],
-        minLength: [3, "Debe tener al menos 3 caracteres"]
+
     },
     Decoration:{
         type: String
