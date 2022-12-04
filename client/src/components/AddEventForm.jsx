@@ -38,6 +38,15 @@ const NewEvent = e => {
     }
     console.log(data);
 
+    setName("");
+    setDescription("");
+    setDate("");
+    setUbication("");
+    setFood("");
+    setMusic("");
+    setDecoration("");
+    setPhotos("");
+    setAgree(false);
 
     // axios.post('http://localhost:8000/event/create', data, { withCredentials: true })
     //     .then(res => history.push('/dashboard'))
@@ -47,8 +56,14 @@ const NewEvent = e => {
 
 
 const AgreeServices = () =>{
+    
     console.log("holi");
+    if(Agree){
+        setAgree(false);
+    }else{
     setAgree(true);
+    }
+    
 }
 
 
@@ -106,13 +121,63 @@ const AgreeServices = () =>{
                         {errorRegistro.Ubication ? <span className="text-danger">{errorRegistro.Ubication.message}</span> : null}
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="Food">Comida</label>
-                        <input type="Food" name="Food" id="Food" className="form-control"
-                        value={Food} onChange={e => setFood(e.target.value)}
-                        />
-                        {errorRegistro.Food ? <span className="text-danger">{errorRegistro.Food.message}</span> : null}
-                    </div>
+                    {Agree ?  
+                    <>
+
+<div className="form-group ">
+
+<label htmlFor="Food">Comida</label>
+<div className="d-flex">
+<input type="Food" name="Food" id="Food" className="form-control"
+value={Food} onChange={e => setFood(e.target.value)}/>
+<input className=" m-3" id="status1" type="checkbox" name="status" 
+// value={status[0]} onChange={StatusChange} 
+/>
+</div>
+
+</div>
+
+<div className="form-group ">
+
+<label htmlFor="Music">Musicos</label>
+<div className="d-flex">
+<input type="Music" name="Music" id="Music" className="form-control"
+value={Music} onChange={e => setMusic(e.target.value)}/>
+<input className=" m-3" id="status1" type="checkbox" name="status" 
+// value={status[0]} onChange={StatusChange} 
+/>
+</div>
+
+</div>
+
+<div className="form-group ">
+
+<label htmlFor="Photos">Fotografo</label>
+<div className="d-flex">
+<input type="Photos" name="Photos" id="Photos" className="form-control"
+value={Photos} onChange={e => setPhotos(e.target.value)}/>
+<input className=" m-3" id="status1" type="checkbox" name="status" 
+// value={status[0]} onChange={StatusChange} 
+/>
+</div>
+</div>
+
+<div className="form-group ">
+
+<label htmlFor="Decoration">Decoración</label>
+<div className="d-flex">
+<input type="Decoration" name="Decoration" id="Decoration" className="form-control"
+value={Decoration} onChange={e => setDecoration(e.target.value)}/>
+<input className=" m-3" id="status1" type="checkbox" name="status" 
+// value={status[0]} onChange={StatusChange} 
+/>
+</div>
+</div>
+
+                    </> 
+                    : null}
+
+
                 
                     
 
@@ -120,7 +185,7 @@ const AgreeServices = () =>{
                 </form>
 
                 <div className="form-group">
-                        <button className="btn btn-success  my-2" onClick={AgreeServices}>Agregar Servicios</button>
+                        <button className="btn btn-success  my-2" onClick={AgreeServices}>{Agree ? "Quitar Servicios" : "Agregar Servicios"  }</button>
                 </div>
                 <div className="col-4"></div>
             </div>
