@@ -69,3 +69,78 @@ button:focus-visible {
   }
 }
 
+/* css laura */
+.cont{
+  margin-top: 25px;
+}
+
+.cont3{
+  margin-top: 50px;
+  padding: 30px;
+}
+
+.logo{
+  width: 650px;
+  margin-top: 220px;
+  margin-left: 65px;
+}
+
+.b{
+  margin-top: 20px;
+  margin-right: 5px;
+
+}
+.buton{
+  margin-left: 200px;
+}
+
+.color{
+  background-color: black;
+  height: 705px;
+
+}
+.btn2 {
+  background-color:black; 
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.btn2 {
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+}
+
+.btn2:hover {
+  background-color: white; 
+  color: black;
+  box-shadow: 0 12px 16px 0 rgba(10, 10, 10, 0.979), 0 17px 50px 0 rgba(10, 10, 10, 0.8);
+}
+
+.logo2{
+  margin-left: 5px;
+  width: 650px;
+  margin-top: 230px;
+}
+.logo3{
+  margin-left: 5px;
+  width: 650px;
+  margin-top: 230px;
+}
+
+.p{
+  margin-top: 25px;
+}
+
+.sesion{
+  text-align: center;
+  color: white;
+}
+.logonav{
+  width: 250px;
+}
