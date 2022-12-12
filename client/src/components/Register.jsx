@@ -14,14 +14,15 @@ function Register(props) {
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const [errorRegister, setErrorsRegister] = useState({});
+
+
     
     const navigate = useNavigate();
-    let name = "nombre"
     const register = e => {
         e.preventDefault();
 
         axios.post('http://127.0.0.1:8000/api/register',{
-            FirstName:name,
+            FirstName,
             LastName,
             Email,
             MobileNumber,
@@ -37,27 +38,22 @@ function Register(props) {
     return (
 
     <div className="formulario">
-            <div className="col-6">
+            <div className="col-12">
                 <h2>Registration</h2>
                 <form onSubmit={register}>
-                    {/* <div className="form-group">
+                    <div className="form-group">
                         <label htmlFor="FirstName">Nombre</label>
-                        <input  type="text" 
-                                name="FirstName" 
-                                id="FirstName" 
-                                className="form-control" 
-                                value={FirstName} 
-                                onChange={e=> setFirstName(e.target.value)}  />
+                        <input  type="text" name="FirstName" id="FirstName" className="form-control" value={FirstName} onChange={e=> setFirstName(e.target.value)}  />
                         {errorRegister.FirstName ? <span className="text-danger">{errorRegister.FirstName.message}</span> : null}
-                    </div> */}
+                    </div> 
                     <div className="form-group">
                         <label htmlFor="LastName">Apellido</label>
                         <input type="text" name="LastName" id="LastName" className="form-control"  onChange={e=> setLastName(e.target.value)}  />
                         {errorRegister.LastName ? <span className="text-danger">{errorRegister.LastName.message}</span> : null}
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">E-mail</label>
-                        <input type="email" name="email" id="email" className="form-control" value={Email} onChange={e=> setEmail(e.target.value)}  />
+                        <label htmlFor="Email">E-mail</label>
+                        <input type="Email" name="Email" id="Email" className="form-control" value={Email} onChange={e=> setEmail(e.target.value)}  />
                         {errorRegister.Email ? <span className="text-danger">{errorRegister.Email.message}</span> : null}
                     </div>
                     <div className="form-group">
@@ -65,11 +61,13 @@ function Register(props) {
                         <input type="MobileNumber" name="MobileNumber" id="MobileNumber" className="form-control" value={MobileNumber} onChange={e=> setMobileNumber(e.target.value)}  />
                         {errorRegister.MobileNumber ? <span className="text-danger">{errorRegister.MobileNumber.message}</span> : null}
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="assistant">Assistant</label>
-                        <input type="Assistant" name="Assistant" id="Assistant" className="form-control" value={Assistant} onChange={e=> setAssistant(e.target.value)}  />
-                        {errorRegister.Assistant ? <span className="text-danger">{errorRegister.Assistant.message}</span> : null}
-                    </div>
+                        Assistant
+                        <div className="form-group">
+                        <label> 
+                        <img src="event-manager-react\client\src\img\invitation\degree1.png"/>
+                        <input type="radio"  name='cat1' value={Assistant} onChange={e=> setAssistant(e.target.Assistant)}  />
+                    {errorRegister.Assistant ? <span className="text-danger">{errorRegister.Assistant.message}</span>: null}</label>
+                </div>
                     <div className="form-group">
                         <label htmlFor="Password">Password</label>
                         <input type="Password" name="Password" id="Password" className="form-control" value={Password} onChange={e=> setPassword(e.target.value)}  />
@@ -82,6 +80,7 @@ function Register(props) {
                     </div>
                     <input type="submit" value="Registarme" className="btn btn-primary" />
                 </form>
+                <Link className='ms-2' to={'/'}>Regresar a Index</Link>
             </div>
 
             </div>
