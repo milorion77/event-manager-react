@@ -1,16 +1,19 @@
 import { React, useState } from "react";
-import { Link, } from "react-router-dom";
-// import React, {useState } from "react";
+import {useNavigate, Link } from "react-router-dom";
+import avatar from "../img/avatars/FEMALE-STAY.gif";
+import celebrate from "../img/avatars/female selected.png";
+
 import axios from "axios";
 
 function AddEventForm(props) {
 
-    // const history = useHistory();
+    const navigate = useNavigate();
 
-    const [Name, setName] = useState("");
+    const [title, setTitle] = useState("");
     const [Type, setType] = useState("");
     const [Description, setDescription] = useState("");
     const [Date, setDate] = useState("");
+    const [Time, setTime] = useState("");
     const [Ubication, setUbication] = useState("");
     const [Food, setFood] = useState([]);
     const [Music, setMusic] = useState([]);
@@ -18,6 +21,8 @@ function AddEventForm(props) {
     const [Decoration, setDecoration] = useState([]);
     const [Status, setStatus] = useState([]);
     const [Services, setServices] = useState([]);
+    const [event_love, setEvent_love] = useState("");
+    const [eventOnOff, seteventOnOff] = useState(false);
 
     //errors
     const [errorRegistro, setErrorRegistro] = useState({});
@@ -34,11 +39,14 @@ function AddEventForm(props) {
         console.log("arriba");
         e.preventDefault();
 
+
+
         let data = {
-            Name,
+            title,
             Type,
             Description,
             Date,
+            Time,
             Ubication,
             Food :[Services.Food,Status[0]],
             Music:[Services.Music,Status[1]],
@@ -50,11 +58,11 @@ function AddEventForm(props) {
         
         axios.post('http://127.0.0.1:8000/api/event/create', data, { withCredentials: true })
             .then(res => {
-                console.log(res);
-                setName("");
+                setTitle("");
                 setType("");
                 setDescription("");
                 setDate("");
+                setTime("");
                 setUbication("");
                 setFood([]);
                 setMusic("");
@@ -64,7 +72,9 @@ function AddEventForm(props) {
 
                 console.log("guardé");
 
-                // history.push('/dashboard')
+
+                navigate('/dashboard')
+
             })
             .catch(err => {
                 // console.log(err.response.data.errors);
@@ -73,7 +83,34 @@ function AddEventForm(props) {
     }
 
 
+    const message = () => {
+        if(Type){
+            seteventOnOff(true);
+        }
+        
 
+    }
+    
+
+    const action = () => {
+        if(Type){
+        var image = document.getElementById('avatar')
+        image.src = celebrate;
+        setEvent_love(Type);
+        message();
+    }
+
+    }
+
+    // const initial = () => {
+
+    //     var image = document.getElementById('avatar')
+    //     image.src = playerrev;
+
+
+    // }
+
+    
     const AgreeServices = () => {
 
         console.log("holi");
@@ -86,7 +123,7 @@ function AddEventForm(props) {
     }
 
     const OptionsChange = ({ target }) => {
-        console.log(target);
+        console.log(target.value);
         setServices({
             
             ...Services,
@@ -108,21 +145,22 @@ function AddEventForm(props) {
             </Link>
             <h1>Registra un nuevo Evento </h1>
 
-            <div className="row">
+            <div className="row  align-items-center ">
+                <div className="my-3  col-8">
                 <form
                     onSubmit={NewEvent}
-                    className="my-3  col-8">
+                    >
 
                     <div className="form-group">
                         <label htmlFor="Name">Nombre de tu evento</label>
                         <input
                             type="text"
-                            name="Name"
-                            id="Name"
+                            name="title"
+                            id="title"
                             className="form-control"
-                            value={Name} onChange={e => setName(e.target.value)}
+                            value={title} onChange={e => setTitle(e.target.value)}
                         />
-                        {errorRegistro.Name ? <span className="text-danger">{errorRegistro.Name.message}</span> : null}
+                        {errorRegistro.title ? <span classtitle="text-danger">{errorRegistro.title.message}</span> : null}
                     </div>
 
                     <div className="form-group">
@@ -130,6 +168,7 @@ function AddEventForm(props) {
 
                         <select type="text" name="Type" id="Type" className="form-control"
                             value={Type} onChange={e => setType(e.target.value)}
+                            onClick={action}
                         >
                             <option value="" hidden>Selecciona una categoria</option>
                             {Events.map(element =>
@@ -159,6 +198,17 @@ function AddEventForm(props) {
                             value={Date} onChange={e => setDate(e.target.value)}
                         />
                         {errorRegistro.Date ? <span className="text-danger">{errorRegistro.Date.message}</span> : null}
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="Time">Hora</label>
+                        <input
+                            type="time"
+                            name="Time"
+                            id="Time"
+                            className="form-control"
+                            value={Time} onChange={e => setTime(e.target.value)}
+                        />
+                        {errorRegistro.Time ? <span className="text-danger">{errorRegistro.Time.message}</span> : null}
                     </div>
                     <div className="form-group">
                         <label htmlFor="Ubication">Ubicación</label>
@@ -229,16 +279,20 @@ function AddEventForm(props) {
                         : null}
 
 
-
-
-
                     <input type="submit" value="Registarme" className="btn btn-primary my-3" />
                 </form>
 
                 <div className="form-group">
                     <button className="btn btn-success  my-2" onClick={AgreeServices}>{Agree ? "Quitar Servicios" : "Agregar Servicios"}</button>
                 </div>
-                <div className="col-4"></div>
+                </div>
+
+                <div className="col-4">
+                    {eventOnOff?  <h2> Adoro los {event_love} </h2>: null}
+            
+                <img src={avatar} width="200px"  alt="asistente" id="avatar"  />
+
+                </div>
             </div>
         </div>
     );

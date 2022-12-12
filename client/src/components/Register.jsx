@@ -57,15 +57,15 @@ function Register(props) {
                         {errorRegister.Email ? <span className="text-danger">{errorRegister.Email.message}</span> : null}
                     </div>
                     <div className="form-group">
-                        <label htmlFor="mobileNumber">Mobile Number</label>
+                        <label htmlFor="mobileNumber">Numero Celular</label>
                         <input type="MobileNumber" name="MobileNumber" id="MobileNumber" className="form-control" value={MobileNumber} onChange={e=> setMobileNumber(e.target.value)}  />
                         {errorRegister.MobileNumber ? <span className="text-danger">{errorRegister.MobileNumber.message}</span> : null}
                     </div>
-                        Assistant
+                        Escoger Asistente
                         <div className="form-group">
                         <label> 
                         <img src="event-manager-react\client\src\img\invitation\degree1.png"/>
-                        <input type="radio"  name='cat1' value={Assistant} onChange={e=> setAssistant(e.target.Assistant)}  />
+                        <input type="radio"  name='Assistant' value={Assistant} onChange={e=> setAssistant(e.target.Assistant)}  />
                     {errorRegister.Assistant ? <span className="text-danger">{errorRegister.Assistant.message}</span>: null}</label>
                 </div>
                     <div className="form-group">

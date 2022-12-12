@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const SchemaEvent = new mongoose.Schema({
-    Name: {
+    title: {
         type: String,
         required: [true, "Debes agregarle un nombre a tu evento"], // cuales son los lenguajes
         minLength: [3, "Debe tener al menos 3 caracteres"]
@@ -19,6 +19,10 @@ const SchemaEvent = new mongoose.Schema({
         type: String,
         required: [true, "Debes Ingresar una Fecha"],
         minLength: [3, "Debe tener al menos 3 caracteres"]
+    },
+    Time:{
+        type: String,
+        required: [true, "Debes Ingresar una Hora"],
     },
     Ubication:{// depende de la api a usar 
         type: String,
