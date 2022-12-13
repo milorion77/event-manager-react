@@ -14,7 +14,10 @@ module.exports = app =>{
 
 
     //rutas eventos
+    app.get('/api/events',EventController.all_event);
+    app.get('/api/event/:id',EventController.get_event);
     app.post('/api/event/create',EventController.create_event);
+    app.put('/api/event/edit/:id',EventController.update_event);
 
 
     // app.post('/api/player', PlayerController.create_player);

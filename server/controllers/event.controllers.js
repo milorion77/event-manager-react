@@ -15,9 +15,10 @@ module.exports.all_event = (req, res) => {
         });
 }
 
-// el usuario y el evento
+// el  evento y su usuario
 module.exports.get_event = (req, res) => {
-    User.findOne({_id:req.params.id}).populate("events")
+    Event.findOne({_id:req.params.id}).populate("Organizer")
+    //.populate("Organizer")
         .then(events => res.json(events))
         .catch(err => {
             console.log(err);
@@ -35,7 +36,7 @@ module.exports.create_event = (req, res) => {
 }
 
 // ingresar los eventos al usuario
-module.exports.update_event = (req, res) => {
+module.exports.insert_event_in_user = (req, res) => {
     User.findByIdAndUpdate({_id: req.params.id}, {$push: { events: req.body.questions}  })
         .then(userandevent =>{ 
             console.log(userandevent);
@@ -46,6 +47,12 @@ module.exports.update_event = (req, res) => {
 // borrar el evento
 module.exports.delete_event = (req, res) => {
     Event.deleteOne({_id: req.params.id})
+        .then(events => res.json(events))
+        .catch(err => {res.status(400).json(err);});
+}
+
+module.exports.update_event = (req, res) => {
+    Event.findByIdAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators:true})
         .then(events => res.json(events))
         .catch(err => {res.status(400).json(err);});
 }

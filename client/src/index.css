@@ -14,6 +14,14 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+/* .avatar{
+  position:absolute;
+  height:350px;
+  width:auto;
+  top: 55%;
+  right : 3%;
+  z-index: 1;
+} */
 
 a {
   font-weight: 500;

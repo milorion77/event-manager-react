@@ -31,7 +31,6 @@ const SchemaEvent = new mongoose.Schema({
     },
     Food:{
         type: Array
-
     },
     Decoration:{
         type: Array
@@ -41,9 +40,6 @@ const SchemaEvent = new mongoose.Schema({
     },
     Phothos:{
         type: Array
-        // deberia ser array con dos campos ejem: ["fulanito el que lo va a hacer", false]
-        // el nombre del que posiblemnte lo va a hacer y al lado check box de si ya lo consiguio o no 
-        //y que si no le recuerde cada tanto 
     },
     Organizer: {
         type: mongoose.Schema.Types.ObjectId,
@@ -52,6 +48,7 @@ const SchemaEvent = new mongoose.Schema({
 
 
 },{timestamps: true , versionKey: false})
+
 
 
 

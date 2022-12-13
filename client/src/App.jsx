@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import AddEventForm from './components/AddEventForm';
 import Dashboard from './components/Dashboard';
+import EditEventForm from './components/EditEventForm';
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,8 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/add-event' element={<AddEventForm />} />
+        <Route path='/edit-event/:id' element={<EditEventForm />} />
+
         <Route path='*' element={
                     <>
                         <p>
