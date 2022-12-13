@@ -21,7 +21,7 @@ app.use(
 );
 
 
-// app.use((req, res, next) => {
+// // app.use((req, res, next) => {
 
 //     // Dominio que tengan acceso (ej. 'http://example.com')
 //     res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
@@ -29,13 +29,13 @@ app.use(
 //     // Metodos de solicitud que deseas permitir
 //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 
-//     // Encabecedados que permites (ej. 'X-Requested-With,content-type')
-//     res.setHeader('Access-Control-Allow-Headers', '*');
+// //     // Encabecedados que permites (ej. 'X-Requested-With,content-type')
+// //     res.setHeader('Access-Control-Allow-Headers', '*');
 
-//     next();
-// })
+// //     next();
+// // })
 
-require("./Server/config/moongose.config");
+require("./server/config/moongose.config");
 
 //Importamos rutas
 const misRutas = require("./server/routes/event.routes");
