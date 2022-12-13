@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-
+import female from "../img/avatars/female selected.png";
+import male from "../img/avatars/male selected.png";
+import cat from "../img/avatars/cat elected.png";
+import dog from "../img/avatars/dog elected.png";
 
 function Register(props) {
     
@@ -15,7 +18,7 @@ function Register(props) {
 
     const [errorRegister, setErrorsRegister] = useState({});
 
-
+    const Assistants= ["female", "male", "cat", "dog",]
     
     const navigate = useNavigate();
     const register = e => {
@@ -39,15 +42,15 @@ function Register(props) {
 
     <div className="formulario">
             <div className="col-12">
-                <h2>Registration</h2>
+                <h2>Registration 📑</h2>
                 <form onSubmit={register}>
                     <div className="form-group">
-                        <label htmlFor="FirstName">Nombre</label>
+                        <label htmlFor="FirstName">Name</label>
                         <input  type="text" name="FirstName" id="FirstName" className="form-control" value={FirstName} onChange={e=> setFirstName(e.target.value)}  />
                         {errorRegister.FirstName ? <span className="text-danger">{errorRegister.FirstName.message}</span> : null}
                     </div> 
                     <div className="form-group">
-                        <label htmlFor="LastName">Apellido</label>
+                        <label htmlFor="LastName">Last Name</label>
                         <input type="text" name="LastName" id="LastName" className="form-control"  onChange={e=> setLastName(e.target.value)}  />
                         {errorRegister.LastName ? <span className="text-danger">{errorRegister.LastName.message}</span> : null}
                     </div>
@@ -57,30 +60,37 @@ function Register(props) {
                         {errorRegister.Email ? <span className="text-danger">{errorRegister.Email.message}</span> : null}
                     </div>
                     <div className="form-group">
-                        <label htmlFor="mobileNumber">Numero Celular</label>
+                        <label htmlFor="mobileNumber">Mobile Number</label>
                         <input type="MobileNumber" name="MobileNumber" id="MobileNumber" className="form-control" value={MobileNumber} onChange={e=> setMobileNumber(e.target.value)}  />
                         {errorRegister.MobileNumber ? <span className="text-danger">{errorRegister.MobileNumber.message}</span> : null}
                     </div>
-                        Escoger Asistente
-                        <div className="form-group">
-                        <label> 
-                        <img src="event-manager-react\client\src\img\invitation\degree1.png"/>
-                        <input type="radio"  name='Assistant' value={Assistant} onChange={e=> setAssistant(e.target.Assistant)}  />
-                    {errorRegister.Assistant ? <span className="text-danger">{errorRegister.Assistant.message}</span>: null}</label>
-                </div>
+                    
+                    Assistant
+                    {Assistants.map(elemento =>(  
+                    <div className="form-group">
+                        <input  id={"Assistant"+elemento} type="radio" name="Assistant"  value={elemento} onChange={e=>setAssistant(e.target.value)} />       
+                        <label classname="" htmlFor="Assistant">
+                        <img src= {elemento === "female" ? female: elemento === "male" ? male: elemento === "cat" ? cat: dog } 
+                        className="img-responsive" alt="avatar" width="80px" /> 
+                    </label>
+                    {errorRegister.Assistant ? <span className="text-danger">{errorRegister.Assistant.message}</span> : null}
+                    </div>
+                    ))}
                     <div className="form-group">
                         <label htmlFor="Password">Password</label>
                         <input type="Password" name="Password" id="Password" className="form-control" value={Password} onChange={e=> setPassword(e.target.value)}  />
                         {errorRegister.Password ? <span className="text-danger">{errorRegister.Password.message}</span> : null}
-                    </div>
+                </div>    
                     <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirmación</label>
+                        <label htmlFor="confirmPassword">Confirmation Password</label>
                         <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={confirmPassword} onChange={e=> setConfirmPassword(e.target.value)}  />
                         {errorRegister.confirmPassword ? <span className="text-danger">{errorRegister.confirmPassword.message}</span> : null}
                     </div>
-                    <input type="submit" value="Registarme" className="btn btn-primary" />
+
+                    <input type="submit" value="Registarme ✅"  className="btn btn-link" />
+                    
                 </form>
-                <Link className='ms-2' to={'/'}>Regresar a Index</Link>
+                <Link className='ms-2' to={'/'}>Regresar a Index </Link>
             </div>
 
             </div>
