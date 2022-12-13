@@ -65,17 +65,7 @@ function Register(props) {
                         {errorRegister.MobileNumber ? <span className="text-danger">{errorRegister.MobileNumber.message}</span> : null}
                     </div>
                     
-                    Assistant
-                    {Assistants.map(elemento =>(  
-                    <div className="form-group">
-                        <input  id={"Assistant"+elemento} type="radio" name="Assistant"  value={elemento} onChange={e=>setAssistant(e.target.value)} />       
-                        <label classname="" htmlFor="Assistant">
-                        <img src= {elemento === "female" ? female: elemento === "male" ? male: elemento === "cat" ? cat: dog } 
-                        className="img-responsive" alt="avatar" width="80px" /> 
-                    </label>
-                    {errorRegister.Assistant ? <span className="text-danger">{errorRegister.Assistant.message}</span> : null}
-                    </div>
-                    ))}
+
                     <div className="form-group">
                         <label htmlFor="Password">Password</label>
                         <input type="Password" name="Password" id="Password" className="form-control" value={Password} onChange={e=> setPassword(e.target.value)}  />
@@ -87,7 +77,23 @@ function Register(props) {
                         {errorRegister.confirmPassword ? <span className="text-danger">{errorRegister.confirmPassword.message}</span> : null}
                     </div>
 
-                    <input type="submit" value="Registarme ✅"  className="btn btn-link" />
+                    Assistant
+                    <div className='row align-items-end'>
+                    {Assistants.map(elemento =>(  
+                    <div className="form-group col-3  ">
+                        <input  id={"Assistant"+elemento} type="radio" name="Assistant"  value={elemento} onChange={e=>setAssistant(e.target.value)} />       
+                        
+                        <label classname=" " htmlFor="Assistant">
+                        <img    src= {elemento === "female" ? female: elemento === "male" ? male: elemento === "cat" ? cat: dog } 
+                        className="img-responsive " alt="avatar" width="80px" /> 
+
+                    </label>
+                    {errorRegister.Assistant ? <span className="text-danger">{errorRegister.Assistant.message}</span> : null}
+                    </div>
+                    ))}
+                    </div>
+
+                    <input type="submit" value="Registarme ✅"  className="btn btn-success my-3" />
                     
                 </form>
                 <Link className='ms-2' to={'/'}>Regresar a Index </Link>
