@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/EventManager", {
+mongoose.connect("mongodb://127.0.0.1:27017/EventManager", {
     useNewUrlParser: true,
 	useUnifiedTopology: true
 })

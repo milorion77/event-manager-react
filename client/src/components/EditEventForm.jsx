@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import {useNavigate, Link, useParams} from "react-router-dom";
 import avatar from "../img/avatars/FEMALE-STAY.gif";
 import celebrate from "../img/avatars/female selected.png";
+import logo from '../img/invitation/logo.jpeg'
 
 import axios from "axios";
 
@@ -151,9 +152,21 @@ function EditEventForm(props) {
 
     return (
         <div>
-            <Link className="ms-2 float-right" to={"/"}>
-                Index
-            </Link>
+            <nav className="navbar navbar-expand-lg bg-light">
+                <div className="container-fluid">
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                            <Link className="bar" to={'/dashboard'}>Calendario</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src={logo} alt='logo' className='logonav'></img>
+                </div>
+            </nav>
             <h1>Edita tu  Evento </h1>
 
             <div className="row  align-items-center ">
