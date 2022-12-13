@@ -288,7 +288,7 @@ function AddEventForm(props) {
                 </div>
 
                 <div className="col-4">
-                    {eventOnOff?  <h2> Adoro los {event_love} </h2>: null}
+                    {eventOnOff?  <h2> Amo la celebración de {event_love} </h2>: null}
             
                 <img src={avatar} width="200px"  alt="asistente" id="avatar"  />
 
