@@ -7,6 +7,7 @@ import * as bootstrap from "bootstrap";
 import { Link } from "react-router-dom";
 import AWN from "awesome-notifications";
 import avatar from "../img/avatars/FEMALE-STAY.gif";
+import axios from "axios";
 import logo from '../img/invitation/logo.jpeg'
 
 function Dashboard(props) {
